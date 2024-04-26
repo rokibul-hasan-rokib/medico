@@ -29,7 +29,7 @@
                     <a href=""><span class="fa fa-user mr-3"></span> Dashboard</a>
                 </li>
                 <li>
-                    <a href=""><span class="fa fa-sticky-note mr-3"></span>Role Mangement</a>
+                    <a href="{{route('role.index')}}"><span class="fa fa-sticky-note mr-3"></span>Role Mangement</a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-paper-plane mr-3"></span> Settings</a>

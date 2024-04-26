@@ -6,6 +6,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,10 @@ Route::group(['middleware'=>['is_login']],function(){
     Route::get('/service',[ServiceController::class, 'index'])->name('service');
 
     Route::get('/rokib',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/role/destroy/{id}', [RoleController::class, 'destroy'])->name('user.destroy');
+    Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('user.edit');
+    Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('user.update');
     
 });
 
