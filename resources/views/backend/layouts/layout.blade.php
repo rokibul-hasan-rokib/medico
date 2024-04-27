@@ -29,6 +29,18 @@
                     <a href=""><span class="fa fa-user mr-3"></span> Dashboard</a>
                 </li>
                 <li>
+                    <a href=""><span class="fa fa-user mr-3"></span>Service</a>
+                </li>
+                <li>
+                    <a href=""><span class="fa fa-user mr-3"></span>Doctor</a>
+                </li>
+                <li>
+                    <a href=""><span class="fa fa-user mr-3"></span>Appointment</a>
+                </li>
+                <li>
+                    <a href=""><span class="fa fa-user mr-3"></span>Customer Contact</a>
+                </li>
+                <li>
                     <a href="{{route('role.index')}}"><span class="fa fa-sticky-note mr-3"></span>Role Mangement</a>
                 </li>
                 <li>

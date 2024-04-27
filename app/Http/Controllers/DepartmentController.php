@@ -10,7 +10,7 @@ class DepartmentController extends Controller
     //
     public function index()
     {
-        $departments = Contact::all();
+        $departments = Department::all();
         return view('frontend.department.department', compact('departments'));
     }
 }

@@ -26,11 +26,12 @@ class AppointmentController extends Controller
         ]);
 
         Appointment::create($validatedData);
-        return redirect()->route('appointment')->with('success', 'Appointment created successfully!');
+        return redirect('/appointment')->with('success', 'Appointment created successfully!');
     }
 
     public function update(Request $request, Appointment $appointment)
     {
+
         $validatedData = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
@@ -42,7 +43,7 @@ class AppointmentController extends Controller
         ]);
 
         $appointment->update($validatedData);
-        return redirect()->route('appointments.index')->with('success', 'Appointment updated successfully!');
+        return route('appointments.index')->with('success', 'Appointment updated successfully!');
     }
 
     // public function destroy(Appointment $appointment)

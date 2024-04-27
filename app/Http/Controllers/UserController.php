@@ -30,7 +30,7 @@ class UserController extends Controller
         ]);
         
         // Redirect to the questions page with user ID
-        return redirect()->route('questions', ['user' => $user->id]);
+        return redirect()->route('login.page');
     }
 
     public function loadLogin(){
@@ -45,7 +45,7 @@ class UserController extends Controller
         
         $userCredential = $request->only('email','password');
         if(Auth::attempt($userCredential)){
-            return redirect('/dashboard');
+            return redirect('/admin/dashboard');
         }else{
             return back()->with('error','Email and Password is incorrect');
         }

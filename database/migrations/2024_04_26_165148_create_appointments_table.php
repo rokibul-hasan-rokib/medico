@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->date('date');
+            $table->string('date');
             $table->string('department');
             $table->string('doctor');
             $table->text('description')->nullable();
