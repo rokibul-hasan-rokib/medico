@@ -29,16 +29,25 @@
                     <a href=""><span class="fa fa-user mr-3"></span> Dashboard</a>
                 </li>
                 <li>
-                    <a href=""><span class="fa fa-user mr-3"></span>Service</a>
+                    <a href="{{route('service.show')}}"><span class="fa fa-user mr-3"></span>Service</a>
                 </li>
                 <li>
-                    <a href=""><span class="fa fa-user mr-3"></span>Doctor</a>
+                    <a href="{{route('department.show')}}"><span class="fa fa-user mr-3"></span>Department</a>
                 </li>
                 <li>
-                    <a href=""><span class="fa fa-user mr-3"></span>Appointment</a>
+                    <a href="{{route('doctor.show')}}"><span class="fa fa-user mr-3"></span>Doctor</a>
                 </li>
                 <li>
-                    <a href=""><span class="fa fa-user mr-3"></span>Customer Contact</a>
+                    <a href="{{route('appointment.show')}}"><span class="fa fa-user mr-3"></span>Appointment</a>
+                </li>
+                <li>
+                    <a href="{{route('contact.show')}}"><span class="fa fa-user mr-3"></span>Contact</a>
+                </li>
+                <li>
+                    <a href="{{route('slider')}}"><span class="fa fa-user mr-3"></span>Slider</a>
+                </li>
+                <li>
+                    <a href="{{route('gallery')}}"><span class="fa fa-user mr-3"></span>Gallery</a>
                 </li>
                 <li>
                     <a href="{{route('role.index')}}"><span class="fa fa-sticky-note mr-3"></span>Role Mangement</a>

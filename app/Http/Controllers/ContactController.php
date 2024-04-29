@@ -27,4 +27,8 @@ class ContactController extends Controller
          return redirect('/contact')->with('success', 'Contact created successfully!');
 
     }
+    public function index1(){
+        $contacts = Contact::all();
+        return view('backend.contact.contact', compact('contacts'));
+    }
 }

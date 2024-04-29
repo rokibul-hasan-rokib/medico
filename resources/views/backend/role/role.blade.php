@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($user as $user)
+            @foreach ($users as $user)
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
@@ -23,7 +23,7 @@
                         <a class="btn-small btn-danger" href="{{ route('user.destroy', $user->id) }}">Delete</a>
                     </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 @endsection

@@ -52,5 +52,10 @@ class AppointmentController extends Controller
     //     return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully!');
     // }
 
+    public function index1(){
+        $appointments = Appointment::all();
+        return view('backend.appointment.appointment', compact('appointments'));
+    }
+
     
 }

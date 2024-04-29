@@ -5,11 +5,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ServiceController ;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,12 +39,27 @@ use App\Http\Controllers\ChatController;
 
 
     Route::get('/appointment',[AppointmentController::class, 'index'])->name('appointment');
+    Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
     Route::post('/appointment',[AppointmentController::class, 'store'])->name('appointment.store');
     Route::get('/contact',[ContactController::class, 'index'])->name('contact');
+    Route::get('/contact/show',[ContactController::class, 'index1'])->name('contact.show');
     Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');
     Route::get('/department',[DepartmentController::class, 'index'])->name('department');
+    Route::get('/department/show',[DepartmentController::class, 'index1'])->name('department.show');
+    Route::get('/department/store',[DepartmentController::class, 'show'])->name('department.show.show');
+    Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
     Route::get('/doctor',[DoctorController::class, 'index'])->name('doctor');
+    Route::get('/doctor/show',[DoctorController::class, 'index1'])->name('doctor.show');
+    Route::get('/doctor/store',[DoctorController::class, 'show'])->name('doctor.show.show');
+    Route::post('/doctor/store',[DoctorController::class, 'store'])->name('doctor.store');
     Route::get('/service',[ServiceController::class, 'index'])->name('service');
+    Route::get('/service/show',[ServiceController::class, 'index1'])->name('service.show');
+    Route::get('/service/store',[ServiceController::class, 'show'])->name('service.show.show');
+    Route::post('/service/store',[ServiceController::class, 'store'])->name('service.store');
+    Route::get('/gellary',[GalleryController::class, 'index'])->name('gallery');
+    Route::get('/slider',[SliderController::class, 'index'])->name('slider');
+    Route::get('/slider/store',[SliderController::class, 'show'])->name('slider.show');
+    Route::post('/slider/store',[SliderController::class, 'store'])->name('slider.store');
 
 
     
