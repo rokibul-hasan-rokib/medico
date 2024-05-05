@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Alert;
 
 class ContactController extends Controller
 {
@@ -24,6 +25,7 @@ class ContactController extends Controller
         ]);
 
          Contact::create($validatedData);
+         Alert::success('Success', 'Contact created successfully!');
          return redirect('/contact')->with('success', 'Contact created successfully!');
 
     }

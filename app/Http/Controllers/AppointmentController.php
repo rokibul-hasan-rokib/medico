@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use Alert;
 
 class AppointmentController extends Controller
 {
@@ -26,6 +27,7 @@ class AppointmentController extends Controller
         ]);
 
         Appointment::create($validatedData);
+        Alert::success('Success', 'Appointment created successfully!');
         return redirect('/appointment')->with('success', 'Appointment created successfully!');
     }
 

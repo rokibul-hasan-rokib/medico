@@ -8,7 +8,7 @@
   <!-- ======= Appointment Section ======= -->
   <section id="appointment" class="appointment section-bg" style="margin-top: 5rem">
     <div class="container" data-aos="fade-up">
-
+      @include('sweetalert::alert')
       <div class="section-title">
         <h2>Make an Appointment</h2>
         <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
@@ -52,11 +52,7 @@
         <div class="form-group mt-3">
           <textarea class="form-control" name="description" id="description" rows="5" placeholder="Message (Optional)"></textarea>
         </div>
-        <div class="my-3">
-          <div class="loading">Loading</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-        </div>
+      
         <div class="text-center"><button type="submit">Make an Appointment</button></div>
       </form>
 

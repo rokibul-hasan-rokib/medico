@@ -7,7 +7,7 @@
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact" style="margin-top: 5rem">
         <div class="container">
-
+            @include('sweetalert::alert')
             <div class="section-title">
                 <h2>Contact</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
