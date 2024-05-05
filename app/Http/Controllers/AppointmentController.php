@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Department;
+use App\Models\Doctor;
 use Alert;
 
 class AppointmentController extends Controller
@@ -11,7 +13,9 @@ class AppointmentController extends Controller
     //
     public function index(){
         $appointments = Appointment::all();
-        return view('frontend.appointment.appointment', compact('appointments'));
+        $departments = Department::all();
+        $doctors = Doctor::all();
+        return view('frontend.appointment.appointment', compact('appointments', 'departments', 'doctors'));
     }
 
     public function store(Request $request)
