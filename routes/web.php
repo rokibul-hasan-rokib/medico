@@ -41,6 +41,11 @@ use App\Http\Controllers\SliderController;
     Route::get('/appointment',[AppointmentController::class, 'index'])->name('appointment');
     Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
     Route::post('/appointment',[AppointmentController::class, 'store'])->name('appointment.store');
+    Route::get('/appointment/{id}',[AppointmentController::class, 'edit'])->name('appointments.edit');
+    Route::put('/appointment/update/{id}',[AppointmentController::class, 'update'])->name('appointments.update');
+    Route::delete('/destroy/{id}',[AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+    
     Route::get('/contact',[ContactController::class, 'index'])->name('contact');
     Route::get('/contact/show',[ContactController::class, 'index1'])->name('contact.show');
     Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');

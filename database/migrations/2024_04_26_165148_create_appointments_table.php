@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('department');
             $table->string('doctor');
             $table->text('description')->nullable();
+            $table->enum('status', ['active', 'pending'])->default('pending'); 
+
             $table->timestamps();
         });
     }

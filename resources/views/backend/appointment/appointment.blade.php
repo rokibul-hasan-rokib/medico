@@ -13,6 +13,7 @@
             <th>Department</th>
             <th>Doctor</th>
             <th>Description</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -26,10 +27,15 @@
                 <td>{{ $appointment->department }}</td>
                 <td>{{ $appointment->doctor }}</td>
                 <td>{{ $appointment->description }}</td>
-                <td>
-                    {{-- <a class="btn-small btn-success" href="{{ route('user.edit', $user->id) }}">Update</a>
-                    <a class="btn-small btn-danger" href="{{ route('user.destroy', $user->id) }}">Delete</a> --}}
-                </td>
+                <td>{{ $appointment->status }}</td>
+                    <td>
+                        <a href="{{ route('appointments.edit', $appointment->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
             </tr>
         @endforeach
     </tbody>

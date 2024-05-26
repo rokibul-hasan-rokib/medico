@@ -12,6 +12,10 @@ class DoctorController extends Controller
         $doctors = Doctor::all();
         return view('frontend.doctor.doctor',compact('doctors'));
     }
+    public function index4(){
+        $doctors = Doctor::all();
+        return response()->json($doctors, 200);
+    }
     
     public function index1(){
         $doctors = Doctor::all();

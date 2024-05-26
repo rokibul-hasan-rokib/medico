@@ -34,29 +34,56 @@ class AppointmentController extends Controller
         Alert::success('Success', 'Appointment created successfully!');
         return redirect('/appointment')->with('success', 'Appointment created successfully!');
     }
-
-    public function update(Request $request, Appointment $appointment)
+    
+    public function edit($id)
     {
+        $appointment = Appointment::find($id);
 
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|string',
-            'date' => 'required|date',
-            'department' => 'required|string',
-            'doctor' => 'required|string',
-            'description' => 'nullable|string',
-        ]);
+        if (!$appointment) {
+            return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
+        }
 
-        $appointment->update($validatedData);
-        return route('appointments.index')->with('success', 'Appointment updated successfully!');
+        return view('backend.appointment.update', compact('appointment'));
     }
 
-    // public function destroy(Appointment $appointment)
-    // {
-    //     $appointment->delete();
-    //     return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully!');
-    // }
+
+        public function update(Request $request, $id)
+        {
+            $appointment = Appointment::find($id);
+    
+            if (!$appointment) {
+                return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
+            }
+    
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email',
+                'phone' => 'required|string',
+                'date' => 'required|date',
+                'department' => 'required|string',
+                'doctor' => 'required|string',
+                'description' => 'nullable|string',
+                'status' => 'required|in:pending,active',
+            ]);
+    
+            $appointment->update($request->all());
+    
+            return redirect()->route('appointment.show')->with('success', 'Appointment updated successfully.');
+        }
+
+
+        public function destroy($id)
+        {
+            $appointment = Appointment::find($id);
+    
+            if (!$appointment) {
+                return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
+            }
+    
+            $appointment->delete();
+    
+            return redirect()->route('appointment.show')->with('success', 'Appointment deleted successfully.');
+        }
 
     public function index1(){
         $appointments = Appointment::all();

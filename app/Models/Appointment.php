@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Appointment extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'email',
@@ -15,6 +16,11 @@ class Appointment extends Model
         'date',
         'department',
         'doctor',
-        'description'
+        'description',
+        'status'
     ];
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_PENDING = 'pending';
+
 }
