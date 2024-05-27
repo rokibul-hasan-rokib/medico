@@ -47,29 +47,37 @@ class AppointmentController extends Controller
     }
 
 
-        public function update(Request $request, $id)
-        {
-            $appointment = Appointment::find($id);
-    
-            if (!$appointment) {
-                return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
-            }
-    
-            $request->validate([
-                'name' => 'required|string',
-                'email' => 'required|email',
-                'phone' => 'required|string',
-                'date' => 'required|date',
-                'department' => 'required|string',
-                'doctor' => 'required|string',
-                'description' => 'nullable|string',
-                'status' => 'required|in:pending,active',
-            ]);
-    
-            $appointment->update($request->all());
-    
-            return redirect()->route('appointment.show')->with('success', 'Appointment updated successfully.');
+    public function update(Request $request, $id)
+    {
+        $appointment = Appointment::find($id);
+
+        if (!$appointment) {
+            return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
         }
+
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'date' => 'required|date',
+            'department' => 'required|string',
+            'doctor' => 'required|string',
+            'description' => 'nullable|string',
+            'status' => 'required|in:pending,active',
+        ]);
+
+        $appointment->update($request->all());
+
+        // Send notification to the user if status is updated to active
+        if ($appointment->status == 'active') {
+            // Ensure the appointment has a user associated with it
+            if ($appointment->user) {
+                $appointment->user->notify(new AppointmentStatusUpdated($appointment));
+            }
+        }
+
+        return redirect()->route('appointment.show')->with('success', 'Appointment updated successfully.');
+    }
 
 
         public function destroy($id)
