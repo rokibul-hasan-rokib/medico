@@ -7,6 +7,8 @@ use App\Models\Appointment;
 use App\Models\Department;
 use App\Models\Doctor;
 use Alert;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\AppointmentStatusUpdated;
 
 class AppointmentController extends Controller
 {
