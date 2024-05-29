@@ -1,6 +1,11 @@
 @extends('backend.layouts.layout')
 
 @section('content')
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
 <h1>Appointment List</h1>
 
 <table class="table">
@@ -34,6 +39,10 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                        <form action="{{ route('appointments.updateStatus', $appointment->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Status to Active</button>
                         </form>
                     </td>
             </tr>

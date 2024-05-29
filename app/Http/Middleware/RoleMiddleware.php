@@ -2,12 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsLogin
+class RoleMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +15,16 @@ class IsLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()){
-            return redirect('/admin/dashboard');
-           }
-            
+            if (!Auth::check()) {
+                return redirect('login');
+            }
+    
+            $user = Auth::user();
+            if (!in_array($user->role, $roles)) {
+                return redirect('home')->with('error', 'You do not have access to this section.');
+            }
+    
             return $next($request);
+        
     }
 }

@@ -16,20 +16,16 @@ class AppointmentStatusUpdated extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct(Appointment $appointment)
-    {
-        $this->appointment = $appointment;
-    }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array<int, string>
-     */
-    public function via(object $notifiable): array
-    {
-        return ['mail'];
-    }
+     public function __construct($appointment)
+     {
+         $this->appointment = $appointment;
+     }
+ 
+     public function via($notifiable)
+     {
+         return ['mail'];
+     }
 
     /**
      * Get the mail representation of the notification.
@@ -37,13 +33,12 @@ class AppointmentStatusUpdated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Your Appointment Status Has Been Updated')
-                    ->greeting('Hello ' . $this->appointment->name . ',')
-                    ->line('Your appointment status has been updated to: ' . $this->appointment->status)
-                    ->line('Appointment Details:')
-                    ->line('Date: ' . $this->appointment->date)
-                    ->line('Department: ' . $this->appointment->department)
+                    ->subject('Your Appointment is Active')
+                    ->greeting('Hello, ' . $notifiable->name)
+                    ->line('Your appointment has been confirmed and is now active.')
+                    ->line('Appointment Date: ' . $this->appointment->date)
                     ->line('Doctor: ' . $this->appointment->doctor)
+                    ->action('View Appointment', url('/appointments/' . $this->appointment->id))
                     ->line('Thank you for using our application!');
     }
 
@@ -54,8 +49,9 @@ class AppointmentStatusUpdated extends Notification
      */
     public function toArray(object $notifiable): array
     {
-        return [
-            //
+            return [
+                'appointment_id' => $this->appointment->id,
+                'status' => $this->appointment->status,     
         ];
     }
 }

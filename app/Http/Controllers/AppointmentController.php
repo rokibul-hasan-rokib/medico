@@ -9,6 +9,7 @@ use App\Models\Doctor;
 use Alert;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\AppointmentStatusUpdated;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -32,7 +33,11 @@ class AppointmentController extends Controller
             'description' => 'nullable|string',
         ]);
 
+        // Add the user_id to the validated data
+        $validatedData['user_id'] = Auth::id();
+
         Appointment::create($validatedData);
+
         Alert::success('Success', 'Appointment created successfully!');
         return redirect('/appointment')->with('success', 'Appointment created successfully!');
     }
@@ -100,5 +105,22 @@ class AppointmentController extends Controller
         return view('backend.appointment.appointment', compact('appointments'));
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $appointment = Appointment::with('user')->findOrFail($id);
+        
+        $appointment->status = 'active';
+        $appointment->save();
+
+        $user = $appointment->user; // Assuming the appointment has a user relationship
+
+        if ($user) {
+            // Send notification
+            $user->notify(new AppointmentStatusUpdated($appointment));
+            return redirect()->back()->with('success', 'Appointment status updated and user notified.');
+        } else {
+            return redirect()->back()->with('error', 'User not found for this appointment.');
+        }
+    }
     
 }

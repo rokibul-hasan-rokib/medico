@@ -28,16 +28,7 @@ use App\Http\Controllers\SliderController;
 
 
 // Route::group(['middleware'=>['is_login']],function(){
-
-    Route::get('/',[HomeController::class, 'index'])->name('home');
-    Route::get('/about',[HomeController::class, 'about'])->name('about');
-    Route::get('/chat',[ChatController::class, 'index'])->name('chat');
-    Route::get('/register',[UserController::class, 'loadRegister'])->name('register');
-    Route::post('/register/store',[UserController::class, 'register'])->name('register.store');
-    Route::get('/login',[UserController::class,'loadLogin'])->name('login.page');
-    Route::post('/login',[UserController::class,'userLogin'])->name('login');
-
-
+  Route::middleware(['auth'])->group(function (){
     Route::get('/appointment',[AppointmentController::class, 'index'])->name('appointment');
     Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
     Route::post('/appointment',[AppointmentController::class, 'store'])->name('appointment.store');
@@ -45,26 +36,56 @@ use App\Http\Controllers\SliderController;
     Route::put('/appointment/update/{id}',[AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/destroy/{id}',[AppointmentController::class, 'destroy'])->name('appointments.destroy');
 
+    Route::post('/appointments/{id}/update-status', [AppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
+
+
     
     Route::get('/contact',[ContactController::class, 'index'])->name('contact');
     Route::get('/contact/show',[ContactController::class, 'index1'])->name('contact.show');
     Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');
+
+    
     Route::get('/department',[DepartmentController::class, 'index'])->name('department');
     Route::get('/department/show',[DepartmentController::class, 'index1'])->name('department.show');
     Route::get('/department/store',[DepartmentController::class, 'show'])->name('department.show.show');
     Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
+
+    
     Route::get('/doctor',[DoctorController::class, 'index'])->name('doctor');
     Route::get('/doctor/show',[DoctorController::class, 'index1'])->name('doctor.show');
     Route::get('/doctor/store',[DoctorController::class, 'show'])->name('doctor.show.show');
     Route::post('/doctor/store',[DoctorController::class, 'store'])->name('doctor.store');
+
+    
     Route::get('/service',[ServiceController::class, 'index'])->name('service');
     Route::get('/service/show',[ServiceController::class, 'index1'])->name('service.show');
     Route::get('/service/store',[ServiceController::class, 'show'])->name('service.show.show');
     Route::post('/service/store',[ServiceController::class, 'store'])->name('service.store');
+    
+
     Route::get('/gellary',[GalleryController::class, 'index'])->name('gallery');
+
+    
     Route::get('/slider',[SliderController::class, 'index'])->name('slider');
     Route::get('/slider/store',[SliderController::class, 'show'])->name('slider.show');
     Route::post('/slider/store',[SliderController::class, 'store'])->name('slider.store');
+  });
+
+  
+    Route::get('/',[HomeController::class, 'index'])->name('home');
+    Route::get('/about',[HomeController::class, 'about'])->name('about');
+    Route::get('/chat',[ChatController::class, 'index'])->name('chat');
+
+    
+    Route::get('/register',[UserController::class, 'loadRegister'])->name('register');
+    Route::post('/register/store',[UserController::class, 'register'])->name('register.store');
+
+    
+    Route::get('/login',[UserController::class,'loadLogin'])->name('login.page');
+    Route::post('/login',[UserController::class,'userLogin'])->name('login');
+
+
+  
 
 
     
