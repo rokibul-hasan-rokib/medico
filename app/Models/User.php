@@ -53,4 +53,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Appointment::class);
     }
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+
+    public function receivedMessages()
+    {
+        return $this->hasMany(Message::class, 'receiver_id');
+    }
+
+    public function isAdmin()
+    {
+        return in_array($this->role, ['admin', 'super admin']);
+    }
+
+
+    
 }

@@ -69,12 +69,16 @@ use App\Http\Controllers\SliderController;
     Route::get('/slider',[SliderController::class, 'index'])->name('slider');
     Route::get('/slider/store',[SliderController::class, 'show'])->name('slider.show');
     Route::post('/slider/store',[SliderController::class, 'store'])->name('slider.store');
+
+
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+    Route::post('/chat/send', [ChatController::class, 'sendMessage'])->name('chat.send');
   });
 
   
     Route::get('/',[HomeController::class, 'index'])->name('home');
     Route::get('/about',[HomeController::class, 'about'])->name('about');
-    Route::get('/chat',[ChatController::class, 'index'])->name('chat');
+    // Route::get('/chat',[ChatController::class, 'index'])->name('chat');
 
     
     Route::get('/register',[UserController::class, 'loadRegister'])->name('register');
