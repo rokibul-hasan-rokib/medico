@@ -5,7 +5,7 @@ chat
 
 @section('content')
 
-<div class="container  my-5" style="margin-top: 10rem">
+<div class="container  my-5" style="margin-bottom: 10rem">
     <h1 class="mb-4">Chat</h1>
 
     <div class="card">

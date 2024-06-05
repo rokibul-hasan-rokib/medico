@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
@@ -13,18 +14,18 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle($request, Closure $next, ...$roles)
     {
-            if (!Auth::check()) {
-                return redirect('login');
-            }
-    
-            $user = Auth::user();
-            if (!in_array($user->role, $roles)) {
-                return redirect('home')->with('error', 'You do not have access to this section.');
-            }
-    
-            return $next($request);
-        
+        if (!Auth::check()) {
+            return redirect('login');
+        }
+
+        $user = Auth::user();
+        if (!in_array($user->role, $roles)) {
+            // Redirect to a specific page or return a response
+            return redirect('/admin/dashboard')->with('error', 'You do not have access to this section.');
+        }
+
+        return $next($request);
     }
 }

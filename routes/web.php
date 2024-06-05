@@ -30,25 +30,20 @@ use App\Http\Controllers\SliderController;
 // Route::group(['middleware'=>['is_login']],function(){
   Route::middleware(['auth'])->group(function (){
     Route::get('/appointment',[AppointmentController::class, 'index'])->name('appointment');
-    Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
     Route::post('/appointment',[AppointmentController::class, 'store'])->name('appointment.store');
-    Route::get('/appointment/{id}',[AppointmentController::class, 'edit'])->name('appointments.edit');
-    Route::put('/appointment/update/{id}',[AppointmentController::class, 'update'])->name('appointments.update');
-    Route::delete('/destroy/{id}',[AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
 
     Route::post('/appointments/{id}/update-status', [AppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
 
 
     
     Route::get('/contact',[ContactController::class, 'index'])->name('contact');
-    Route::get('/contact/show',[ContactController::class, 'index1'])->name('contact.show');
+
     Route::post('/contact',[ContactController::class, 'store'])->name('contact.store');
 
     
     Route::get('/department',[DepartmentController::class, 'index'])->name('department');
-    Route::get('/department/show',[DepartmentController::class, 'index1'])->name('department.show');
-    Route::get('/department/store',[DepartmentController::class, 'show'])->name('department.show.show');
-    Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
+   
 
     
     Route::get('/doctor',[DoctorController::class, 'index'])->name('doctor');
@@ -58,17 +53,7 @@ use App\Http\Controllers\SliderController;
 
     
     Route::get('/service',[ServiceController::class, 'index'])->name('service');
-    Route::get('/service/show',[ServiceController::class, 'index1'])->name('service.show');
-    Route::get('/service/store',[ServiceController::class, 'show'])->name('service.show.show');
-    Route::post('/service/store',[ServiceController::class, 'store'])->name('service.store');
-    
 
-    Route::get('/gellary',[GalleryController::class, 'index'])->name('gallery');
-
-    
-    Route::get('/slider',[SliderController::class, 'index'])->name('slider');
-    Route::get('/slider/store',[SliderController::class, 'show'])->name('slider.show');
-    Route::post('/slider/store',[SliderController::class, 'store'])->name('slider.store');
 
 
     Route::get('/chat', [ChatController::class, 'index'])->name('chat');
@@ -103,8 +88,38 @@ use App\Http\Controllers\SliderController;
 
   //Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
   Route::get('/logout',[UserController::class,'logout'])->name('logout');  
-  Route::get('/admin/dashboard',[DashboardController::class,'index'])->name('dashboard');
-  Route::get('/role', [RoleController::class, 'index'])->name('role.index');
-  Route::get('/role/destroy/{id}', [RoleController::class, 'destroy'])->name('user.destroy');
-  Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('user.edit');
-  Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('user.update');
+
+
+  Route::middleware(['auth', 'role:admin,super admin,doctor'])->group(function () {
+    
+    Route::get('/admin/dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/role/destroy/{id}', [RoleController::class, 'destroy'])->name('user.destroy');
+    Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('user.edit');
+    Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('user.update');
+
+    Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
+    Route::get('/appointment/{id}',[AppointmentController::class, 'edit'])->name('appointments.edit');
+    Route::put('/appointment/update/{id}',[AppointmentController::class, 'update'])->name('appointments.update');
+    Route::delete('/destroy/{id}',[AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+    Route::get('/contact/show',[ContactController::class, 'index1'])->name('contact.show');
+
+    Route::get('/department/show',[DepartmentController::class, 'index1'])->name('department.show');
+    Route::get('/department/store',[DepartmentController::class, 'show'])->name('department.show.show');
+    Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
+
+
+    Route::get('/service/show',[ServiceController::class, 'index1'])->name('service.show');
+    Route::get('/service/store',[ServiceController::class, 'show'])->name('service.show.show');
+    Route::post('/service/store',[ServiceController::class, 'store'])->name('service.store');
+    
+
+    Route::get('/gellary',[GalleryController::class, 'index'])->name('gallery');
+
+    
+    Route::get('/slider',[SliderController::class, 'index'])->name('slider');
+    Route::get('/slider/store',[SliderController::class, 'show'])->name('slider.show');
+    Route::post('/slider/store',[SliderController::class, 'store'])->name('slider.store');
+
+  });

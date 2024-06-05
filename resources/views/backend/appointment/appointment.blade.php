@@ -42,7 +42,7 @@
                         </form>
                         <form action="{{ route('appointments.updateStatus', $appointment->id) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary">Status to Active</button>
+                            <button type="submit" class="btn btn-primary">Active</button>
                         </form>
                     </td>
             </tr>

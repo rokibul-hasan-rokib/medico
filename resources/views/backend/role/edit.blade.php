@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('backend.layouts.layout')
 
 @section('content')
     <h1>User Updated</h1>
@@ -28,7 +28,8 @@
                                     value={{ $user['role'] }} required>
                                     <option value="">{{ $user['role'] }}</option>
                                     <option value="admin" {{ $user->role == 'admin' ? 'admin' : 'user' }}>admin</option>
-                                    <option value="user" {{ $user->role == 'user' ? 'user' : 'admin' }}>user</option>
+                                    <option value="super admin" {{ $user->role == 'super admin' ? 'super admin' : 'user' }}>super admin</option>
+                                    <option value="doctor" {{ $user->role == 'doctor' ? 'doctor' : 'user' }}>doctor</option>
                                 </select>
                             </div>
 

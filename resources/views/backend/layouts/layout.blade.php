@@ -24,10 +24,12 @@
             </div>
             <h1><a href="/dashboard" class="logo">Project Name</a></h1>
             <ul class="list-unstyled components mb-5">
+             
 
                 <li>
                     <a href=""><span class="fa fa-user mr-3"></span> Dashboard</a>
                 </li>
+                @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN || auth()->user()->role == \App\Models\User::ROLE_SUPERADMIN) 
                 <li>
                     <a href="{{route('service.show')}}"><span class="fa fa-user mr-3"></span>Service</a>
                 </li>
@@ -58,6 +60,13 @@
                 <li>
                     <a href="{{ route('logout') }}"><span class="fa fa-paper-plane mr-3"></span>Log Out</a>
                 </li>
+                @elseif(auth()->user()->role == \App\Models\User::ROLE_DOCTOR)
+                <li>
+                    <a href="{{route('appointment.show')}}"><span class="fa fa-user mr-3"></span>Appointment</a>
+                </li>
+                @else
+                <p>You do not have access to this section.</p>
+                @endif
             </ul>
 
         </nav>

@@ -44,9 +44,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
     const ROLE_USER = 'user';
     const ROLE_ADMIN = 'admin';
-    const ROLE_SUPERADMIN = 'superadmin';
+    const ROLE_SUPERADMIN = 'super admin';
     const ROLE_DOCTOR = 'doctor';
 
     public function appointments()

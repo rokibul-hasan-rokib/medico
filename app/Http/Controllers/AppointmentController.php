@@ -120,7 +120,7 @@ class AppointmentController extends Controller
             return redirect()->back()->with('success', 'Appointment status updated and user notified.');
         } else {
             return redirect()->back()->with('error', 'User not found for this appointment.');
-        }
+        }  
     }
     
 }
