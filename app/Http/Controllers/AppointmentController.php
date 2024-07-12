@@ -8,6 +8,7 @@ use App\Models\Department;
 use App\Models\Doctor;
 use Alert;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\AppointmentDeleted;
 use App\Notifications\AppointmentStatusUpdated;
 use Carbon\Carbon;
 
@@ -87,18 +88,23 @@ class AppointmentController extends Controller
     }
 
 
-        public function destroy($id)
-        {
-            $appointment = Appointment::find($id);
-    
-            if (!$appointment) {
-                return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
-            }
-    
+    public function destroy($id)
+    {
+        $appointment = Appointment::find($id);
+
+        if ($appointment) {
+            // Notify the user
+            $user = $appointment->user; // Assuming the Appointment model has a user relationship
+            $user->notify(new AppointmentDeleted($appointment));
+
+            // Delete the appointment
             $appointment->delete();
-    
-            return redirect()->route('appointment.show')->with('success', 'Appointment deleted successfully.');
+
+            return redirect()->route('appointment.show')->with('success', 'Appointment deleted and user notified.');
         }
+
+        return redirect()->route('appointment.show')->with('error', 'Appointment not found.');
+    }
 
     public function index1(){
         $appointments = Appointment::all();
