@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
+
 
 class UserController extends Controller
 {
@@ -14,23 +16,17 @@ class UserController extends Controller
     }
 
     
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users|max:255',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-
-        // Create the user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        
-        // Redirect to the questions page with user ID
-        return redirect()->route('login.page');
+
+        $user->sendOtpNotification();
+
+        return redirect()->route('verification.notice');
     }
 
     public function loadLogin(){

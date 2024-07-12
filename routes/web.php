@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\OtpVerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,9 @@ use App\Http\Controllers\SliderController;
     Route::get('/register',[UserController::class, 'loadRegister'])->name('register');
     Route::post('/register/store',[UserController::class, 'register'])->name('register.store');
 
+    Route::get('verify-otp', [OtpVerificationController::class, 'showOtpForm'])->name('verify.otp.form');
+    Route::post('verify-otp', [OtpVerificationController::class, 'verifyOtp'])->name('verify.otp');
+    Route::get('verify-notice', [OtpVerificationController::class, 'verificationNotice'])->name('verification.notice');
     
     Route::get('/login',[UserController::class,'loadLogin'])->name('login.page');
     Route::post('/login',[UserController::class,'userLogin'])->name('login');

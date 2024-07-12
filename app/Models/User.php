@@ -5,8 +5,11 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\OtpNotification;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Otp;
 
 class User extends Authenticatable
 {
@@ -49,6 +52,19 @@ class User extends Authenticatable
     const ROLE_ADMIN = 'admin';
     const ROLE_SUPERADMIN = 'super admin';
     const ROLE_DOCTOR = 'doctor';
+
+    public function sendOtpNotification()
+    {
+        $otp = rand(100000, 999999); // Generate a 6-digit OTP
+
+        Otp::create([
+            'user_id' => $this->id,
+            'otp' => $otp,
+            'is_used' => false,
+        ]);
+
+        $this->notify(new OtpNotification($otp));
+    }
 
     public function appointments()
     {
