@@ -25,12 +25,14 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'phone' => 'required|string',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:15',
             'date' => 'required|date',
-            'department' => 'required|string',
-            'doctor' => 'required|string',
+            'department' => 'required|string|max:255',
+            'doctor' => 'required|string|max:255',
+            'age' => 'required|string|max:3',
+            'gender' => 'required|string|in:male,female,other', 
             'description' => 'nullable|string',
         ]);
 

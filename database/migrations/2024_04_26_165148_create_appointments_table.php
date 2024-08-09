@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('date');
+            $table->date('date');
             $table->string('department');
             $table->string('doctor');
+            $table->string('age');
+            $table->string('gender');
             $table->text('description')->nullable();
             $table->enum('status', ['active', 'pending'])->default('pending'); 
 
