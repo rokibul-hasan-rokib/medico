@@ -13,19 +13,20 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
             $table->date('date');
             $table->string('department');
             $table->string('doctor');
-            $table->string('age');
-            $table->string('gender');
+            $table->integer('age');
+            $table->enum('gender', ['male', 'female', 'other']);
             $table->text('description')->nullable();
             $table->enum('status', ['active', 'pending'])->default('pending'); 
 
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

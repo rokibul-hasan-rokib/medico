@@ -44,6 +44,10 @@
                             @csrf
                             <button type="submit" class="btn btn-primary">Active</button>
                         </form>
+                        <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">destroy</button>
+                        </form>
                     </td>
             </tr>
         @endforeach

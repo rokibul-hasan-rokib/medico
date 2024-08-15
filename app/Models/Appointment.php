@@ -17,16 +17,18 @@ class Appointment extends Model
         'date',
         'department',
         'doctor',
+        'age',
+        'gender',
         'description',
-        'status'
+        'status',
     ];
 
-    const STATUS_ACTIVE = 'active';
-    const STATUS_PENDING = 'pending';
-
+    // Relationship with User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
+    const STATUS_ACTIVE = 'active';
+    const STATUS_PENDING = 'pending';
 }

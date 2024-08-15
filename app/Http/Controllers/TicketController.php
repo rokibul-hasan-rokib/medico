@@ -6,20 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Department;
 use App\Models\Doctor;
+use App\Models\Ticket;
 use Alert;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\AppointmentDeleted;
 use App\Notifications\AppointmentStatusUpdated;
 
-class AppointmentController extends Controller
+class TicketController extends Controller
 {
     //
     public function index(){
-        $appointments = Appointment::all();
+        $tickets = Ticket::all();
         $departments = Department::all();
         $doctors = Doctor::all();
-        return view('frontend.appointment.appointment', compact('appointments', 'departments', 'doctors'));
+        return view('frontend.ticket', compact('tickets', 'departments', 'doctors'));
     }
 
     public function store(Request $request)
@@ -40,7 +41,7 @@ class AppointmentController extends Controller
         $validatedData['user_id'] = Auth::id();
         $validatedData['date'] = Carbon::createFromFormat('m-d-Y', $request->date)->format('Y-m-d');
         try {
-            $appointments=Appointment::create($validatedData);
+            Ticket::create($validatedData);
             Alert::success('Success', 'Appointment created successfully!');
             return redirect('/appointment ')->with('success', 'Appointment created successfully!');
         } catch (\Exception $e) {

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ServiceController ;
 use App\Http\Controllers\DashboardController;
@@ -31,10 +32,14 @@ use App\Http\Controllers\OtpVerificationController;
 // Route::group(['middleware'=>['is_login']],function(){
   Route::middleware(['auth'])->group(function (){
     Route::get('/appointment',[AppointmentController::class, 'index'])->name('appointment');
-    Route::post('/appointment',[AppointmentController::class, 'store'])->name('appointment.store');
-
-
+    Route::post('/appointment/store',[AppointmentController::class, 'store'])->name('appointment.store');
     Route::post('/appointments/{id}/update-status', [AppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
+    Route::post('/appointments/{id}/delete-status', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+  
+    Route::post('/ticket/store',[TicketController::class, 'store'])->name('ticket.store');
+
+    Route::get('/ticket',[TicketController::class, 'index'])->name('ticket');
 
 
     
