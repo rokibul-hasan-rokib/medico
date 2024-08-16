@@ -10,9 +10,7 @@
 
             <div class="section-title">
                 <h2>About Us</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-                    sit in iste officiis commodi quidem hic quas.</p>
+                <p>We are with you 24 hours for your safe treatment.  We have been working for your reliable treatment. Our organization has been working all over Bangladesh.</p>
             </div>
 
             <div class="row">

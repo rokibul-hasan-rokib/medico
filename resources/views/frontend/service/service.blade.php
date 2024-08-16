@@ -11,7 +11,7 @@
   
           <div class="section-title">
             <h2>Services</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>We will send you the highest ambulance and medical services with your safe treatment, doctors and various tests</p>
           </div>
   
           <div class="row">

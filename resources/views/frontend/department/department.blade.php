@@ -11,7 +11,7 @@
 
       <div class="section-title">
         <h2>Departments</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <p>We are working with every department all over Bangladesh. We have selected the department keeping in mind the problem of the patient.</p>
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -49,25 +49,31 @@
               <h3>Cardiology</h3>
               <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
               <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-              <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+              <p>Cardiology is a branch of medicine that deals with disorders of the heart and blood vessels. It involves diagnosing and treating conditions such as coronary artery disease, heart failure, arrhythmias, and congenital heart defects. Cardiologists are specialized doctors who focus on heart health, performing procedures like angioplasty, stenting, and pacemaker implantation, as well as managing chronic heart conditions through medication and lifestyle changes.</p>
             </div>
             <div class="tab-pane" id="tab-2">
               <h3>Neurology</h3>
               <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
               <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-              <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+              <p>Neurology is a branch of medicine that focuses on the diagnosis and treatment of disorders of the nervous system, which includes the brain, spinal cord, and peripheral nerves. Neurologists are medical specialists who manage conditions such as epilepsy, stroke, multiple sclerosis, Parkinson's disease, Alzheimer's disease, migraines, and various other neurological disorders.
+
+                Neurology involves a wide range of diagnostic tests and procedures, including imaging studies like MRI and CT scans, electroencephalograms (EEGs) to assess brain activity, and lumbar punctures to analyze cerebrospinal fluid. Treatment in neurology may include medications, physical therapy, lifestyle changes, and in some cases, surgical interventions. Research in neurology is ongoing, aiming to better understand complex neurological conditions and develop more effective treatments.</p>
             </div>
             <div class="tab-pane" id="tab-3">
               <h3>Hepatology</h3>
               <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
               <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
-              <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+              <p>Hepatology is a branch of medicine that focuses on the study, diagnosis, and treatment of diseases related to the liver, gallbladder, biliary tree, and pancreas. Hepatologists are medical specialists who manage a variety of liver conditions, including hepatitis (viral, autoimmune, or alcoholic), cirrhosis, liver cancer, fatty liver disease, and liver transplant evaluation and management.
+
+                The liver plays a crucial role in many bodily functions, such as detoxification, protein synthesis, and the production of biochemicals necessary for digestion. Hepatologists use a variety of diagnostic tools, including blood tests, imaging studies like ultrasounds and MRIs, liver biopsies, and elastography (a specialized imaging technique to assess liver stiffness).</p>
             </div>
             <div class="tab-pane" id="tab-4">
               <h3>Pediatrics</h3>
               <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
               <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
-              <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+              <p>Pediatrics is a branch of medicine that focuses on the health and medical care of infants, children, and adolescents. Pediatricians are doctors who specialize in diagnosing and treating a wide range of conditions that affect young patients, from minor illnesses to serious diseases. Their care extends from newborns to young adults, typically up to the age of 18.
+
+                Pediatric care involves not only the treatment of illnesses but also preventive health care. Pediatricians monitor growth and development, administer vaccinations, provide guidance on nutrition and safety, and support the emotional and behavioral well-being of children. They also work closely with parents and guardians to educate them about their child's health and development.</p>
             </div>
           </div>
         </div>

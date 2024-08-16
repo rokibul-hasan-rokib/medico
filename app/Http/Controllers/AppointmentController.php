@@ -24,7 +24,6 @@ class AppointmentController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->all());
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -38,7 +37,7 @@ class AppointmentController extends Controller
         ]);
 
         $validatedData['user_id'] = Auth::id();
-        $validatedData['date'] = Carbon::createFromFormat('m-d-Y', $request->date)->format('Y-m-d');
+        // $validatedData['date'] = Carbon::createFromFormat('m-d-Y', $request->date)->format('Y-m-d');
         try {
             $appointments=Appointment::create($validatedData);
             Alert::success('Success', 'Appointment created successfully!');

@@ -11,7 +11,9 @@
 
       <div class="section-title">
         <h2>Doctors</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <p>Doctors, or physicians, are medical professionals who diagnose, treat, and manage illnesses and injuries. They play a critical role in maintaining and improving patient health through various means, including medical examinations, prescribing medications, performing surgeries, and offering lifestyle advice.
+
+          There are different types of doctors, each specializing in particular areas of medicine:</p>
       </div>
 
       <div class="row">

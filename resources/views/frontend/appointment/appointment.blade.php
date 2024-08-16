@@ -12,7 +12,7 @@
       
       <div class="section-title">
         <h2>Make an Appointment</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <p>From here you will register. Select your Name, Email, Phone, Appointment Date, Department and Doctor and make your comments. Our representative will contact you.</p>
       </div>
       @if ($errors->any())
       <div class="bg-red-500 text-white p-4 mb-6 rounded">
@@ -23,7 +23,7 @@
           </ul>
       </div>
   @endif
-      <form action="{{route('ticket.store')}}" method="POST" enctype="multipart/form-data">
+      <form action="{{route('appointment.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
           <div class="col-md-4 form-group">

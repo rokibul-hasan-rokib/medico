@@ -16,9 +16,7 @@
                 <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg)">
                     <div class="container">
                         <h2>Welcome to <span>Medicio</span></h2>
-                        <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut
-                            aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus
-                            repellendus deleniti vel.</p>
+                        <p>We are at your side for your good health and safe treatment. We have reliable doctors and medical centers.  Stay with us.</p>
                         <a href="#about" class="btn-get-started scrollto">Read More</a>
                     </div>
                 </div>
@@ -315,7 +313,7 @@
                         fugiat sit in iste officiis commodi quidem hic quas.</p>
                 </div>
 
-                <form action="{{ route('ticket.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('appointment.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-4 form-group">
