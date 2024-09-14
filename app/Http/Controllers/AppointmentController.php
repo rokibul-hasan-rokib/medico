@@ -14,7 +14,7 @@ use App\Notifications\AppointmentStatusUpdated;
 
 class AppointmentController extends Controller
 {
-    //
+    
     public function index(){
         $appointments = Appointment::all();
         $departments = Department::all();
@@ -46,7 +46,7 @@ class AppointmentController extends Controller
             return redirect()->back()->with('error', 'Failed to create appointment. Error: ' . $e->getMessage());
         }
     }
-    
+
     public function edit($id)
     {
         $appointment = Appointment::find($id);
@@ -118,7 +118,7 @@ class AppointmentController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $appointment = Appointment::with('user')->findOrFail($id);
-        
+
         $appointment->status = 'active';
         $appointment->save();
 
@@ -130,7 +130,7 @@ class AppointmentController extends Controller
             return redirect()->back()->with('success', 'Appointment status updated and user notified.');
         } else {
             return redirect()->back()->with('error', 'User not found for this appointment.');
-        }  
+        }
     }
-    
+
 }

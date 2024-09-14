@@ -16,7 +16,7 @@
         @foreach ($departments as $department)
             <tr>
                 <td>{{ $department->name }}</td>
-                <td><img src="{{ asset('storage/' . $department->image) }}" alt="{{ $department->name }}" style="max-width: 100px;"></td>
+                <td><img src="{{ asset($department->image) }}" alt="{{ $department->name }}" style="max-width: 100px;"></td>
                 <td>{{ $department->description }}</td>
                 {{-- <td>
                     <a class="btn-small btn-success" href="{{ route('user.edit', $user->id) }}">Update</a>

@@ -25,7 +25,7 @@ class DepartmentController extends Controller
         return view('backend.department.store', compact('departments'));
     }
 
-    
+
 
     public function store(Request $request)
     {
@@ -35,8 +35,15 @@ class DepartmentController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        // Upload image and get path
-        $imagePath = $request->file('image')->store('public/images');
+         // Manually handle image upload and define the path
+         if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '-' . $file->getClientOriginalName(); // Generate a unique name
+            $destinationPath = public_path('images'); // Public directory 'public/images'
+            $file->move($destinationPath, $filename); // Move file to the desired location
+            $imagePath = 'images/' . $filename; // Relative path to store in DB
+        }
+
 
         $departments = Department::create([
             'name' => $validatedData['name'],
