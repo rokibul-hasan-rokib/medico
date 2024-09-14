@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\Storage;
+
 
 class DoctorController extends Controller
 {
@@ -16,7 +18,7 @@ class DoctorController extends Controller
         $doctors = Doctor::all();
         return response()->json($doctors, 200);
     }
-    
+
     public function index1(){
         $doctors = Doctor::all();
         return view('backend.doctor.doctor',compact('doctors'));
@@ -34,8 +36,14 @@ class DoctorController extends Controller
             'department' => 'nullable|string',
         ]);
 
-        // Upload image and get path
-        $imagePath = $request->file('image')->store('public/images');
+         // Manually handle image upload and define the path
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = time() . '-' . $file->getClientOriginalName(); // Generate a unique name
+        $destinationPath = public_path('images'); // Public directory 'public/images'
+        $file->move($destinationPath, $filename); // Move file to the desired location
+        $imagePath = 'images/' . $filename; // Relative path to store in DB
+    }
 
         $doctors = Doctor::create([
             'name' => $validatedData['name'],
@@ -46,5 +54,5 @@ class DoctorController extends Controller
         //return response('/department/show')->json($departments, 201);
         return redirect()->route('doctor.show',['doctor' => $doctors]);
     }
-    
+
 }

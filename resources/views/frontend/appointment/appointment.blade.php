@@ -9,7 +9,7 @@
   <section id="appointment" class="appointment section-bg" style="margin-top: 5rem">
     <div class="container" data-aos="fade-up">
       @include('sweetalert::alert')
-      
+
       <div class="section-title">
         <h2>Make an Appointment</h2>
         <p>From here you will register. Select your Name, Email, Phone, Appointment Date, Department and Doctor and make your comments. Our representative will contact you.</p>
@@ -40,8 +40,8 @@
           <div class="col-md-4 form-group mt-3">
             <input type="date" name="date" class="form-control" id="date" placeholder="Appointment Date" required>
           </div>
-    
-             
+
+
           <div class="col-md-4 form-group mt-3">
             <select name="department" id="department" class="form-select">
               <option value="">Select Department</option>
@@ -50,8 +50,8 @@
               <option value="Department 3">Department 3</option>
             </select>
           </div>
-         
-         
+
+
           <div class="col-md-4 form-group mt-3">
             <select name="doctor" id="doctor" class="form-select">
               <option value="">Select Doctor</option>
@@ -60,7 +60,7 @@
               <option value="Doctor 3">Doctor 3</option>
             </select>
           </div>
-         
+
         </div>
         <div class="row">
         <div class="col-md-4 form-group mt-3">
@@ -80,12 +80,25 @@
         <div class="form-group mt-3">
           <textarea class="form-control" name="description" id="description" rows="5" placeholder="Message (Optional)"></textarea>
         </div>
-      
+
         <div class="text-center"><button type="submit">Make an Appointment</button></div>
       </form>
     </div>
   </section><!-- End Appointment Section -->
 
+  <script>
+    $(function() {
+        var today = new Date();
+        var maxDate = new Date(today);
+        maxDate.setDate(today.getDate() + 30);
+
+        $("#date").datepicker({
+            minDate: 0, // today
+            maxDate: maxDate, // 30 days from today
+            dateFormat: "yy-mm-dd" // use the desired date format
+        });
+    });
+</script>
 
 @endsection
 
