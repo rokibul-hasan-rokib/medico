@@ -47,11 +47,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    
+
     const ROLE_USER = 'user';
     const ROLE_ADMIN = 'admin';
     const ROLE_SUPERADMIN = 'super admin';
     const ROLE_DOCTOR = 'doctor';
+
+    const DEFAULT_PASSWORD = 'admin123';
 
     public function sendOtpNotification()
     {
@@ -86,5 +88,5 @@ class User extends Authenticatable
     }
 
 
-    
+
 }

@@ -25,7 +25,8 @@ class DoctorController extends Controller
     }
     public function show(){
         $doctors = Doctor::all();
-        return view('backend.doctor.store',compact('doctors'));
+        $departments = Department::all();
+        return view('backend.doctor.store',compact('doctors','departments'));
     }
 
     public function store(Request $request)

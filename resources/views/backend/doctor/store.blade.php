@@ -23,8 +23,12 @@
 
                       <div class="form-group">
                           <label for="department">Department:</label>
-                          <textarea id="department" name="department" class="form-control" rows="4" required></textarea>
-                      </div>
+                          <select name="department" id="department" class="form-select">
+                            <option value="">Select Department</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                            @endforeach
+                        </select>
 
                       <button type="submit" class="btn btn-primary">Submit</button>
                   </form>

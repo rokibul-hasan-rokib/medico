@@ -155,7 +155,7 @@ class AppointmentController extends Controller
         // Update the appointment as canceled
         $appointment->update([
             'canceled_at' => now(),
-            'status' => 'canceled', // Optional: if you use status field
+            'status' => 'pending', // Optional: if you use status field
         ]);
 
         // Send email to the admin notifying about the cancellation
@@ -166,7 +166,7 @@ class AppointmentController extends Controller
 
     protected function notifyAdminOfCancellation(Appointment $appointment)
     {
-        $adminEmail = 'rokibulhasan0160765@gmail.com'; // Replace with the admin's email address
+        $adminEmail = 'rokibulhasan018722@gmail.com'; // Replace with the admin's email address
 
         Mail::send('emails.appointment_canceled', ['appointment' => $appointment], function ($message) use ($adminEmail) {
             $message->to($adminEmail)
