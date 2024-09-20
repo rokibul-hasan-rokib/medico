@@ -13,4 +13,10 @@ class Doctor extends Model
         'image',
         'department'
     ];
+
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

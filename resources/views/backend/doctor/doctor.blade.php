@@ -24,7 +24,7 @@
                     <img src="{{ asset($doctor->image) }}" alt="{{ $doctor->name }}" style="max-width: 100px;">
                     </td>
                     @endif
-                    <td>Error</td>
+                    <td>{{ $doctor->department }}</td>
                     {{-- <td>
                     <a class="btn-small btn-success" href="{{ route('user.edit', $user->id) }}">Update</a>
                     <a class="btn-small btn-danger" href="{{ route('user.destroy', $user->id) }}">Delete</a>
