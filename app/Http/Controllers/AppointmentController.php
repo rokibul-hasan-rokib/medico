@@ -11,16 +11,28 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\AppointmentDeleted;
 use App\Notifications\AppointmentStatusUpdated;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
-    
+
     public function index(){
         $appointments = Appointment::all();
         $departments = Department::all();
         $doctors = Doctor::all();
         return view('frontend.appointment.appointment', compact('appointments', 'departments', 'doctors'));
     }
+
+    public function userAppointments()
+{
+    $appointments = Appointment::where('user_id', auth()->id())
+    ->where('status', 'active')
+    // ->whereNull('canceled_at')
+    ->get();
+
+    return view('frontend.appointment.userAppointmentList', compact('appointments'));
+}
+
 
     public function store(Request $request)
     {
@@ -131,6 +143,35 @@ class AppointmentController extends Controller
         } else {
             return redirect()->back()->with('error', 'User not found for this appointment.');
         }
+    }
+
+    public function cancel(Appointment $appointment)
+    {
+        // Check if the user is authorized to cancel the appointment
+        if (auth()->id() !== $appointment->user_id) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Update the appointment as canceled
+        $appointment->update([
+            'canceled_at' => now(),
+            'status' => 'canceled', // Optional: if you use status field
+        ]);
+
+        // Send email to the admin notifying about the cancellation
+        $this->notifyAdminOfCancellation($appointment);
+
+        return redirect()->back()->with('status', 'Appointment canceled successfully.');
+    }
+
+    protected function notifyAdminOfCancellation(Appointment $appointment)
+    {
+        $adminEmail = 'rokibulhasan0160765@gmail.com'; // Replace with the admin's email address
+
+        Mail::send('emails.appointment_canceled', ['appointment' => $appointment], function ($message) use ($adminEmail) {
+            $message->to($adminEmail)
+                ->subject('Appointment Cancellation Notification');
+        });
     }
 
 }

@@ -23,7 +23,8 @@ return new class extends Migration
             $table->integer('age');
             $table->enum('gender', ['male', 'female', 'other']);
             $table->text('description')->nullable();
-            $table->enum('status', ['active', 'pending'])->default('pending'); 
+            $table->enum('status', ['active', 'pending'])->default('pending');
+            $table->timestamp('canceled_at')->nullable();
 
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -36,5 +37,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('appointments');
+        $table->dropColumn('canceled_at');
     }
 };
