@@ -67,8 +67,7 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <div class="icon"><i class="fas fa-heartbeat"></i></div>
                             <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
-                                excepturi</p>
+                            <p class="description">We will send you the highest ambulance and medical services with your safe treatment, doctors and various tests</p>
                         </div>
                     </div>
 
@@ -125,9 +124,7 @@
 
                 <div class="section-title">
                     <h2>About Us</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>We are with you 24 hours for your safe treatment.  We have been working for your reliable treatment. Our organization has been working all over Bangladesh.</p>
                 </div>
 
                 <div class="row">
@@ -255,9 +252,7 @@
 
                 <div class="section-title">
                     <h2>Services</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>We will send you the highest ambulance and medical services with your safe treatment, doctors and various tests</p>
                 </div>
 
                 <div class="row">
@@ -308,9 +303,8 @@
 
                 <div class="section-title">
                     <h2>Make an Appointment</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                        consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                        fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <p>From here you will register. Select your Name, Email, Phone, Appointment Date, Department and Doctor and
+                        make your comments. Our representative will contact you.</p>
                 </div>
 
                 <form action="{{ route('appointment.store') }}" method="POST" enctype="multipart/form-data">
