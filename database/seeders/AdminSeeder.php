@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             'name'     => 'Admin One',
             'email'    => 'rokibulhasan015814@gmail.com',
             'password' => Hash::make(User::DEFAULT_PASSWORD),
-            'role' => User::ROLE_SUPERADMIN, // Assign super-admin role
+            'role' => User::ROLE_SUPERADMIN, 
         ];
         $user   = User::query()->where('email', $admins['email'])->exists();
         if (!$user) {
