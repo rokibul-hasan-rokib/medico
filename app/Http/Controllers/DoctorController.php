@@ -57,4 +57,17 @@ class DoctorController extends Controller
         return redirect()->route('doctor.show',['doctor' => $doctors]);
     }
 
+    public function destroy($id){
+        try{
+            $doctor= Doctor::find($id);
+            if ($doctor->delete()) {
+                return redirect()->route('doctor.show');
+        } else {
+                return redirect('/doctor/show');
+        }
+           }catch(\Exception $exception){
+            return $exception->getMessage();
+           }
+    }
+
 }

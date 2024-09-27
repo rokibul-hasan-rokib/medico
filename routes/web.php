@@ -15,6 +15,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\OtpVerificationController;
+use App\Models\Department;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +56,6 @@ use App\Http\Controllers\OtpVerificationController;
 
 
     Route::get('/doctor',[DoctorController::class, 'index'])->name('doctor');
-    Route::get('/doctor/show',[DoctorController::class, 'index1'])->name('doctor.show');
-    Route::get('/doctor/store',[DoctorController::class, 'show'])->name('doctor.show.show');
-    Route::post('/doctor/store',[DoctorController::class, 'store'])->name('doctor.store');
 
 
     Route::get('/service',[ServiceController::class, 'index'])->name('service');
@@ -119,12 +117,16 @@ use App\Http\Controllers\OtpVerificationController;
     Route::get('/department/show',[DepartmentController::class, 'index1'])->name('department.show');
     Route::get('/department/store',[DepartmentController::class, 'show'])->name('department.show.show');
     Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
-
+    Route::delete('/department/delte',[DepartmentController::class,'destroy'])->name('department.destroy');
 
     Route::get('/service/show',[ServiceController::class, 'index1'])->name('service.show');
     Route::get('/service/store',[ServiceController::class, 'show'])->name('service.show.show');
     Route::post('/service/store',[ServiceController::class, 'store'])->name('service.store');
 
+    Route::get('/doctor/show',[DoctorController::class, 'index1'])->name('doctor.show');
+    Route::get('/doctor/store',[DoctorController::class, 'show'])->name('doctor.show.show');
+    Route::post('/doctor/store',[DoctorController::class, 'store'])->name('doctor.store');
+    Route::delete('/destroy/{id}',[DoctorController::class, 'destroy'])->name('doctor.destroy');
 
     Route::get('/gellary',[GalleryController::class, 'index'])->name('gallery');
 

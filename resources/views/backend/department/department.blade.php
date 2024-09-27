@@ -10,6 +10,7 @@
             <th>Name</th>
             <th>Image</th>
             <th>Description</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@
                 <td>{{ $department->name }}</td>
                 <td><img src="{{ asset($department->image) }}" alt="{{ $department->name }}" style="max-width: 100px;"></td>
                 <td>{{ $department->description }}</td>
+                <td>
+                    <a class="btn btn-danger" href="{{ route('department.destroy', $department->id) }}">Delete</a>
+                </td>
                 {{-- <td>
                     <a class="btn-small btn-success" href="{{ route('user.edit', $user->id) }}">Update</a>
                     <a class="btn-small btn-danger" href="{{ route('user.destroy', $user->id) }}">Delete</a>

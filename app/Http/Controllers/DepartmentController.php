@@ -54,4 +54,16 @@ class DepartmentController extends Controller
         //return response('/department/show')->json($departments, 201);
         return redirect()->route('department.show',['department' => $departments]);
     }
+    public function destroy($id){
+        try{
+            $department= Department::find($id);
+            if ($department->delete()) {
+                return redirect()->route('department.show');
+        } else {
+                return redirect('/department/show');
+        }
+           }catch(\Exception $exception){
+            return $exception->getMessage();
+           }
+    }
 }
