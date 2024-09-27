@@ -20,7 +20,11 @@
                 <td><img src="{{ asset($department->image) }}" alt="{{ $department->name }}" style="max-width: 100px;"></td>
                 <td>{{ $department->description }}</td>
                 <td>
-                    <a class="btn btn-danger" href="{{ route('department.destroy', $department->id) }}">Delete</a>
+                    <form action="{{ route('department.destroy', $department->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
                 </td>
                 {{-- <td>
                     <a class="btn-small btn-success" href="{{ route('user.edit', $user->id) }}">Update</a>

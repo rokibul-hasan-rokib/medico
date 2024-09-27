@@ -28,7 +28,13 @@
                     <td>{{ $doctor->department }}</td>
                     <td>
                     {{-- <a class="btn-small btn-success" href="{{ route('user.edit', $user->id) }}">Update</a> --}}
-                    <a class="btn btn-danger" href="{{ route('doctor.destroy', $doctor->id) }}">Delete</a>
+                    <form action="{{ route('doctor.destroy', $doctor->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
+
+
                   </td>
                 </tr>
             @endforeach
