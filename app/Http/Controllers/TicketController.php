@@ -42,13 +42,12 @@ class TicketController extends Controller
         $validatedData['date'] = Carbon::createFromFormat('m-d-Y', $request->date)->format('Y-m-d');
         try {
             Ticket::create($validatedData);
-            Alert::success('Success', 'Appointment created successfully!');
             return redirect('/appointment ')->with('success', 'Appointment created successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to create appointment. Error: ' . $e->getMessage());
         }
     }
-    
+
     public function edit($id)
     {
         $appointment = Appointment::find($id);
@@ -120,7 +119,7 @@ class TicketController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $appointment = Appointment::with('user')->findOrFail($id);
-        
+
         $appointment->status = 'active';
         $appointment->save();
 
@@ -132,7 +131,7 @@ class TicketController extends Controller
             return redirect()->back()->with('success', 'Appointment status updated and user notified.');
         } else {
             return redirect()->back()->with('error', 'User not found for this appointment.');
-        }  
+        }
     }
-    
+
 }
