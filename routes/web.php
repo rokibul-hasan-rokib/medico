@@ -117,7 +117,7 @@ use App\Models\Department;
     Route::get('/department/show',[DepartmentController::class, 'index1'])->name('department.show');
     Route::get('/department/store',[DepartmentController::class, 'show'])->name('department.show.show');
     Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
-    Route::delete('/department/delte',[DepartmentController::class,'destroy'])->name('department.destroy');
+    Route::delete('/department/delete/{id}',[DepartmentController::class,'destroy'])->name('department.destroy');
 
     Route::get('/service/show',[ServiceController::class, 'index1'])->name('service.show');
     Route::get('/service/store',[ServiceController::class, 'show'])->name('service.show.show');

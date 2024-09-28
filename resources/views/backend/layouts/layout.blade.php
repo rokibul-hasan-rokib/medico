@@ -24,15 +24,15 @@
             </div>
             <h1><a href="/dashboard" class="logo">Project Name</a></h1>
             <ul class="list-unstyled components mb-5">
-             
+
 
                 <li>
                     <a href=""><span class="fa fa-user mr-3"></span> Dashboard</a>
                 </li>
-                @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN || auth()->user()->role == \App\Models\User::ROLE_SUPERADMIN) 
-                <li>
+                @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN || auth()->user()->role == \App\Models\User::ROLE_SUPERADMIN)
+                {{-- <li>
                     <a href="{{route('service.show')}}"><span class="fa fa-user mr-3"></span>Service</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('department.show')}}"><span class="fa fa-user mr-3"></span>Department</a>
                 </li>
@@ -45,12 +45,12 @@
                 <li>
                     <a href="{{route('contact.show')}}"><span class="fa fa-user mr-3"></span>Contact</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{route('slider')}}"><span class="fa fa-user mr-3"></span>Slider</a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="{{route('gallery')}}"><span class="fa fa-user mr-3"></span>Gallery</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{route('role.index')}}"><span class="fa fa-sticky-note mr-3"></span>Role Mangement</a>
                 </li>
