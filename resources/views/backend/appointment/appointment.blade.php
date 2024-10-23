@@ -66,13 +66,13 @@
                 { data: 'status', name: 'status' },
                 // Add more columns as needed
             ],
-            dom: 'Bfrtip', // Include Buttons in the DataTable UI
+            dom: 'Bfrtip', 
             buttons: [
                 {
-                    extend: 'pdfHtml5', // Button for PDF export
+                    extend: 'pdfHtml5',
                     text: 'Download PDF',
                     exportOptions: {
-                        columns: ':visible' // You can customize which columns to export
+                        columns: ':visible'
                     }
                 }
             ]
