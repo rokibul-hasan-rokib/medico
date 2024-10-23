@@ -8,7 +8,7 @@
 @endif
 <h1>Appointment List</h1>
 
-<table class="table">
+<table id="sales-table" class="table">
     <thead>
         <tr>
             <th>Name</th>
@@ -44,10 +44,38 @@
                             @csrf
                             <button type="submit" class="btn btn-primary">Active</button>
                         </form>
-                      
+
                     </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+@endsection
+@section('script')
+    $(document).ready(function() {
+        $('#appointmentTable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '{{ route("appointments.index") }}',
+            },
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'user_name', name: 'user_name' },
+                { data: 'appointment_date', name: 'appointment_date' },
+                { data: 'status', name: 'status' },
+                // Add more columns as needed
+            ],
+            dom: 'Bfrtip', // Include Buttons in the DataTable UI
+            buttons: [
+                {
+                    extend: 'pdfHtml5', // Button for PDF export
+                    text: 'Download PDF',
+                    exportOptions: {
+                        columns: ':visible' // You can customize which columns to export
+                    }
+                }
+            ]
+        });
+    });
 @endsection

@@ -106,6 +106,8 @@ use App\Models\Department;
     Route::get('/role/destroy/{id}', [RoleController::class, 'destroy'])->name('user.destroy');
     Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('user.edit');
     Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('user.update');
+    
+    Route::get('/appointments/download-pdf', [AppointmentController::class, 'downloadPdf'])->name('appointments.downloadPdf');
 
     Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
     Route::get('/appointment/{id}',[AppointmentController::class, 'edit'])->name('appointments.edit');

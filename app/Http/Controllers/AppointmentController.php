@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Department;
 use App\Models\Doctor;
-use Alert;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\AppointmentDeleted;
 use App\Notifications\AppointmentStatusUpdated;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AppointmentController extends Controller
 {
@@ -172,6 +172,15 @@ class AppointmentController extends Controller
             $message->to($adminEmail)
                 ->subject('Appointment Cancellation Notification');
         });
+    }
+
+    public function downloadPdf()
+    {
+    $appointments = Appointment::all(); // Fetch your appointment data
+
+    $pdf = Pdf::loadView('appointments.pdf', compact('appointments'));
+
+    return $pdf->download('appointments.pdf');
     }
 
 }
