@@ -106,13 +106,15 @@ use App\Models\Department;
     Route::get('/role/destroy/{id}', [RoleController::class, 'destroy'])->name('user.destroy');
     Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('user.edit');
     Route::post('/role/update/{id}', [RoleController::class, 'update'])->name('user.update');
-    
+
     Route::get('/appointments/download-pdf', [AppointmentController::class, 'downloadPdf'])->name('appointments.downloadPdf');
 
     Route::get('/appointment/show',[AppointmentController::class, 'index1'])->name('appointment.show');
     Route::get('/appointment/{id}',[AppointmentController::class, 'edit'])->name('appointments.edit');
     Route::put('/appointment/update/{id}',[AppointmentController::class, 'update'])->name('appointments.update');
     Route::delete('/destroy/{id}',[AppointmentController::class, 'destroy'])->name('appointments.destroy');
+    Route::get('/appointments/download-pdf', [AppointmentController::class, 'downloadAppointmentsPDF'])->name('appointments.download-pdf');
+
 
     Route::get('/contact/show',[ContactController::class, 'index1'])->name('contact.show');
 

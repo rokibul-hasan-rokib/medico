@@ -8,6 +8,15 @@
 @endif
 <h1>Appointment List</h1>
 
+<div class="row mt-5">
+    <div class="col-md-12">
+        <button onclick="window.history.back()" class="btn btn-primary">Back</button>
+        <button onclick="myFunction('printarea')" class="btn btn-success float-right">Print</button>
+    </div>
+</div>
+<div id="printarea">
+
+
 <table id="sales-table" class="table">
     <thead>
         <tr>
@@ -50,32 +59,17 @@
         @endforeach
     </tbody>
 </table>
+</div>
+<script>
+    function myFunction(el) {
+        var getFullContent = document.body.innerHTML;
+        var printsection = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printsection;
+        window.print();
+        document.body.innerHTML = getFullContent;
+    }
+</script>
 @endsection
 @section('script')
-    $(document).ready(function() {
-        $('#appointmentTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: '{{ route("appointments.index") }}',
-            },
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'user_name', name: 'user_name' },
-                { data: 'appointment_date', name: 'appointment_date' },
-                { data: 'status', name: 'status' },
-                // Add more columns as needed
-            ],
-            dom: 'Bfrtip', 
-            buttons: [
-                {
-                    extend: 'pdfHtml5',
-                    text: 'Download PDF',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                }
-            ]
-        });
-    });
 @endsection
+

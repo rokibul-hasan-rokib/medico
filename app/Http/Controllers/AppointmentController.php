@@ -174,13 +174,19 @@ class AppointmentController extends Controller
         });
     }
 
-    public function downloadPdf()
+    public function downloadAppointmentsPDF(Request $request)
     {
-    $appointments = Appointment::all(); // Fetch your appointment data
+        // Fetch all appointments data
+        $appointments = Appointment::all();
 
-    $pdf = Pdf::loadView('appointments.pdf', compact('appointments'));
+        // Capture the HTML of the current page as a string
+        $html = view('backend.appointment.appointment', compact('appointments'))->render();
 
-    return $pdf->download('appointments.pdf');
+        // Load the HTML and generate the PDF
+        $pdf = PDF::loadHTML($html);
+
+        // Download the generated PDF
+        return $pdf->download('appointments.pdf');
     }
 
 }

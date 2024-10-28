@@ -79,7 +79,6 @@
             @yield('content')
         </div>
     </div>
-    @yield('script')
     <script src="{{ asset('dashboard/js/jquery.min.js') }}"></script>
     <script src="{{ asset('dashboard/js/popper.js') }}"></script>
     <script src="{{ asset('dashboard/js/bootstrap.min.js') }}"></script>
