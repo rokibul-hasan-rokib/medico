@@ -92,9 +92,7 @@ class AppointmentController extends Controller
 
         $appointment->update($request->all());
 
-        // Send notification to the user if status is updated to active
         if ($appointment->status == 'active') {
-            // Ensure the appointment has a user associated with it
             if ($appointment->user) {
                 $appointment->user->notify(new AppointmentStatusUpdated($appointment));
             }
