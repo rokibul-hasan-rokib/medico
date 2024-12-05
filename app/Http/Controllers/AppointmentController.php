@@ -127,21 +127,31 @@ class AppointmentController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $appointment = Appointment::with('user')->findOrFail($id);
+        // Count the number of appointments updated today
+        $updatedAppointmentsToday = Appointment::whereDate('updated_at', now()->toDateString())
+            ->where('status', 'active')
+            ->count();
 
+        // Check if the daily limit is reached
+        if ($updatedAppointmentsToday >= 10) {
+            return redirect()->back()->with('error', 'Daily limit of 10 appointment updates has been reached.');
+        }
+
+        // Find the appointment and update status
+        $appointment = Appointment::with('user')->findOrFail($id);
         $appointment->status = 'active';
         $appointment->save();
 
-        $user = $appointment->user; // Assuming the appointment has a user relationship
-
+        // Notify the user if associated
+        $user = $appointment->user;
         if ($user) {
-            // Send notification
             $user->notify(new AppointmentStatusUpdated($appointment));
             return redirect()->back()->with('success', 'Appointment status updated and user notified.');
         } else {
             return redirect()->back()->with('error', 'User not found for this appointment.');
         }
     }
+
 
     public function cancel(Appointment $appointment)
     {
